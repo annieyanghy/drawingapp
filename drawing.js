@@ -1,12 +1,5 @@
-n
-
-//-------------------------//
-// Initialization and 
-// Global Variables
-//-------------------------//
 
 
-// Get the canvas.
 var canvas = document.getElementById('canvas');
 
 // Set the canvas to fill the screen.
@@ -24,20 +17,18 @@ var currentTouches = new Array;
 var tmp_color = null;
 setColor ('red');
 
-//-------------------------//
-// Helper Methods
-//-------------------------//
 
 
-// Returns a random color from an array.
+
+
 var randomColor = function () {
   return tmp_color;
 	var colors = ['#3F3F3F', '#929292', '#00A3EE', '#F5D908', '#D80351'];
 	return colors[Math.floor(Math.random() * colors.length)];
 };
 
+//touch screen
 
-// Finds the array index of a touch in the currentTouches array.
 var findCurrentTouchIndex = function (id) {
 	for (var i=0; i < currentTouches.length; i++) {
 		if (currentTouches[i].id === id) {
@@ -45,14 +36,10 @@ var findCurrentTouchIndex = function (id) {
 		}
 	}
 
-	// Touch not found! Return -1.
+	
 	return -1;
 };
 
-
-//-------------------------//
-// Handler Methods
-//-------------------------//
 
 
 // Creates a new touch in the currentTouches array and draws the starting
@@ -118,8 +105,7 @@ var touchMoved = function (event) {
 };
 
 
-// Draws a line to the final touch position on the canvas and then
-// removes the touh from the currentTouches array.
+
 var touchEnded = function (event) {
 	var touches = event.changedTouches;
 
@@ -165,12 +151,10 @@ var touchCancelled = function (event) {
 };
 
 
-//-------------------------//
-// Event Listeners
-//-------------------------//
 
 
-// Set up an event listener for new touches.
+
+//  new touches.
 canvas.addEventListener('touchstart', function(e) {
 	e.preventDefault();
 	touchStarted(event);
@@ -178,28 +162,28 @@ canvas.addEventListener('touchstart', function(e) {
 });
 
 
-// Set up an event listener for when a touch ends.
+// for when a touch ends.
 canvas.addEventListener('touchend', function(e) {
 	e.preventDefault();
 	touchEnded(e);
 });
 
 
-// Set up an event listener for when a touch leaves the canvas.
+// for when a touch leaves the canvas.
 canvas.addEventListener('touchleave', function(e) {
 	e.preventDefault();
 	touchEnded(e);
 });
 
 
-// Set up an event listener for when the touch instrument is moved.
+// for when the touch instrument is moved.
 canvas.addEventListener('touchmove', function(e) {
 	e.preventDefault();
 	touchMoved(e);
 });
 
 
-// Set up an event listener to catch cancelled touches.
+// to catch cancelled touches.
 canvas.addEventListener('touchcancel', function(e) {
 	touchCancelled(e);
 });
@@ -253,9 +237,7 @@ pen.style.zIndex = 1000 ;
 document.body.append(pen);
 
 
-// pen.bind('touchmove', false);
 
-//
 
 let redCode = 82
 let blueCode = 66
@@ -312,12 +294,11 @@ function setColor(color) {
 }
 
 function setSwatch(e) {
-  // identify swatch being clicked
-  var swatch = e.target; // which swatch was clicked
-  // set color
+  
+  var swatch = e.target; 
+ 
   setColor(swatch.style.backgroundColor);
-  // give active class
-  //swatch.className += ' active';
+  
   
 }
 
@@ -331,7 +312,7 @@ document.addEventListener('keydown', redraw);
 function redraw(event) {
   keyCode = 32;
   context.clearRect(0, 0, canvas.width, canvas.height); 
-  // Clears the canvas
+  
   
 }
 
